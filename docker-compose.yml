@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+    aerologic:
+        container_name: aerologic
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: aerologic-image
+        volumes:
+            - .:/root/workspace/dev
+        tty: true
