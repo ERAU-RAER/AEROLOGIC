@@ -4,7 +4,7 @@
 
 AErial Routing and Operational LOGistics Integration Code
 
-For a deeper understanding of the underlying concepts and terminology used in this project, please refer to the [ROS 2 documentation](https://docs.ros.org/en/rolling/Concepts.html) and the [SMACC documentation](https://smacc.dev/intro-to-substate-objects/).
+For a deeper understanding of the underlying concepts and terminology used in this project, please refer to the [ROS 2 documentation](https://docs.ros.org/en/rolling/Concepts.html) and the [SMACC documentation](https://smacc.dev/intro-to-substate-objects/). Check out the [example state machine branch](https://github.com/ERAU-SUAS/aerologic/tree/sm_example) for a basic state machine implementation.
 
 ## Prerequisites
 
@@ -66,8 +66,3 @@ SMACC is a library designed for building complex, high-performance state machine
 ### ROS (Robot Operating System)
 
 ROS is a flexible framework for writing robot software. It's a collection of tools, libraries, and conventions aimed at simplifying the development of complex robotic behaviors.
-
-### Example State Machine
-
-![sketch_sm_example](docs/sm_example_diagram.png)
-The diagram visualizes a ROS 2 node within the `sm_example` package with two states, `State 1` and `State 2`. These states toggle based on the parity of numbers publish on the `/number` topic. The `cl_publisher` client generates random numbers,publishing them through client behaviors `cb_publish_high` and `cb_publish_low`. The `cl_subscriber` client listens to `/number` and throws events using the `cb_subscriber_behavior` client behavior, driving state transitions defined in `st_state_1` and `st_state_2`.
