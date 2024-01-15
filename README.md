@@ -46,6 +46,33 @@ exit
 docker-compose down
 ```
 
+## Display Forwarding for Gazebo 
+
+The following steps were followed on Ubuntu 22.0X.
+
+1. Install X11 server host if it's not already installed.
+
+```sh
+sudo apt install xorg
+```
+
+2. Allow docker container to connect to host's X11 server.
+
+```sh
+xhost +local:docker
+```
+
+3. Uncomment the following lines in `docker-compose.yml` 
+
+```yml
+volumes:
+    - /tmp/.X11-unix:/tmp/.X11-unix
+environment:
+    - DISPLAY=${DISPLAY}
+network_mode: "host"
+ipc: "host"
+```
+
 ## Development Guidelines
 
 ### SMACC2 Naming Conventions

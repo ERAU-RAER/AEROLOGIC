@@ -32,4 +32,7 @@ RUN mkdir -p ${COLCON_DEP_WS}/src && cd ${COLCON_DEP_WS}/src && \
     rosdep install --ignore-src --from-paths src -y -r --skip-keys="gazebo gazebo-ros gazebo-plugins ros-foxy-gazebo-ros ros-foxy-gazebo-plugins" && \
     colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
 
+# Gazebo
+RUN apt install -y gazebo11 libgazebo11-dev x11-apps
+
 WORKDIR /root/workspace
