@@ -48,7 +48,7 @@ docker-compose down
 
 ## Display Forwarding for Gazebo 
 
-The following steps were followed on Ubuntu 22.0X.
+The following steps were followed on Ubuntu 22.04.
 
 1. Install X11 server host if it's not already installed.
 
