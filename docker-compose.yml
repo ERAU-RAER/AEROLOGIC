@@ -7,12 +7,12 @@ services:
             context: .
             dockerfile: Dockerfile
         image: aerologic-image
+        tty: true
         volumes:
             - .:/root/workspace/dev
-        ### Uncomment the following lines for display forwarding ###
-            #- /tmp/.X11-unix:/tmp/.X11-unix
-        #environment:
-            #- DISPLAY=${DISPLAY}
-        #network_mode: "host"
-        #ipc: "host"
-        tty: true
+        ### Comment/Delete the following lines to disable display forwarding ###
+            - /tmp/.X11-unix:/tmp/.X11-unix
+        environment:
+            - DISPLAY=${DISPLAY}
+        network_mode: "host"
+        ipc: "host"
