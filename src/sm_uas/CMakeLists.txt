@@ -27,13 +27,22 @@ include_directories(
 add_executable(sm_uas_node src/sm_uas_node.cpp)
 ament_target_dependencies(sm_uas_node rclcpp smacc2 std_msgs Boost)
 
+add_executable(preflight_ok src/preflight_ok.cpp)
+ament_target_dependencies(preflight_ok rclcpp std_msgs)
+
 install(DIRECTORY include/
     DESTINATION include
 )
 
 install(TARGETS
     sm_uas_node
+    preflight_ok
     DESTINATION lib/sm_uas
+)
+
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME}
 )
 
 if(BUILD_TESTING)

@@ -5,9 +5,11 @@
 
 // CLIENTS
 #include <sm_uas/clients/cl_fc_commander/cl_fc_commander.hpp>
+#include <sm_uas/clients/cl_receiver/cl_receiver.hpp>
 
 // ORTHOGONALS
 #include <sm_uas/orthogonals/or_flight_control.hpp>
+#include <sm_uas/orthogonals/or_communication.hpp>
 
 // CLIENT BEHAVIORS
 #include <sm_uas/clients/cl_fc_commander/client_behaviors/cb_takeoff.hpp>
@@ -28,6 +30,7 @@ namespace sm_uas
         void onInitialize() override
         {
             this->createOrthogonal<OrFlightControl>();
+            this->createOrthogonal<OrCommunication>();
         }
     };
 }

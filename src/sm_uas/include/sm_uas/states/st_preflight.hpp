@@ -6,6 +6,10 @@ namespace sm_uas
 {
     struct StPreflight : smacc2::SmaccState<StPreflight, SmUAS>
     {
+        typedef mpl::list<
+            Transition<EvPreflightOk<ClReceiver, OrCommunication>, StTakeoff>
+        >reactions;
+
         using SmaccState::SmaccState;
 
         static void staticConfigure()
