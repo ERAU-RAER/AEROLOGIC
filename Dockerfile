@@ -33,6 +33,7 @@ RUN mkdir -p ${COLCON_DEP_WS}/src && cd ${COLCON_DEP_WS}/src && \
     colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
 
 # Gazebo
-RUN apt install -y gazebo11 libgazebo11-dev x11-apps
+RUN apt install -y gazebo11 libgazebo11-dev x11-apps ignition-citadel
+
 
 WORKDIR /root/workspace
