@@ -5,6 +5,7 @@
 
 // CLIENTS
 #include <sm_uas/clients/cl_fc_commander/cl_fc_commander.hpp>
+#include <sm_uas/clients/cl_fc_listener/cl_fc_listener.hpp>
 #include <sm_uas/clients/cl_receiver/cl_receiver.hpp>
 
 // ORTHOGONALS
