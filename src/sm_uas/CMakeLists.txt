@@ -18,6 +18,7 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(smacc2 REQUIRED)
 find_package(Boost COMPONENTS thread REQUIRED)
+find_package(px4_msgs REQUIRED)
 
 include_directories(
     include
@@ -25,7 +26,7 @@ include_directories(
 )
 
 add_executable(sm_uas_node src/sm_uas_node.cpp)
-ament_target_dependencies(sm_uas_node rclcpp smacc2 std_msgs Boost)
+ament_target_dependencies(sm_uas_node rclcpp smacc2 std_msgs Boost px4_msgs)
 
 add_executable(preflight_ok src/preflight_ok.cpp)
 ament_target_dependencies(preflight_ok rclcpp std_msgs)
