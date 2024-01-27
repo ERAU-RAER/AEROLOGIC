@@ -4,7 +4,7 @@
 
 AErial Routing and Operational LOGistics Integration Code
 
-For a deeper understanding of the underlying concepts and terminology used in this project, please refer to the [ROS 2 documentation](https://docs.ros.org/en/rolling/Concepts.html) and the [SMACC documentation](https://smacc.dev/intro-to-substate-objects/). Check out the [example state machine branch](https://github.com/ERAU-SUAS/aerologic/tree/sm_example) for a basic state machine implementation.
+For a deeper understanding of the underlying concepts and terminology used in this project, please refer to the [ROS 2 documentation](https://docs.ros.org/en/rolling/Concepts.html), [SMACC documentation](https://smacc.dev/intro-to-substate-objects/), and the [PX4 ROS 2 user guide](https://docs.px4.io/main/en/ros/ros2_comm.html). Check out the [example state machine branch](https://github.com/ERAU-SUAS/aerologic/tree/sm_example) for a basic state machine implementation.
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ docker exec -it aerologic bash
 
 ```sh
 source /opt/ros/foxy/setup.bash
-source ~/workspace/dep/install/setup.bash
+source ~/workspace/dep/ros_deps/install/setup.bash
 source ~/workspace/dev/install/setup.bash
 ```
 
@@ -46,7 +46,39 @@ exit
 docker-compose down
 ```
 
-## Display Forwarding for Gazebo 
+## Running the Simulation
+
+1. Start the uXRCE-DDS agent with the following settings
+
+```sh
+MicroXRCEAgent udp4 -p 8888
+```
+
+2. In a new terminal session (inside the container), start a gazebo classic simulation
+
+```sh
+cd /root/workspace/dep/sim_deps/PX4-Autopilot
+make px4_sitl gazebo-classic
+```
+
+3. In a new terminal session, run the temporary preflight test node
+
+```sh
+source /opt/ros/foxy/setup.bash
+source /root/workspace/dev/install/setup.bash
+ros2 run sm_uas preflight_ok
+```
+
+4. In a new terminal session, run the state machine
+
+```sh
+source /opt/ros/foxy/setup.bash
+source /root/workspace/dev/install/setup.bash
+source /root/workspace/dep/ros_deps/install/setup.bash
+ros2 run sm_uas sm_uas_node
+```
+
+## Display Forwarding
 
 The following steps were followed on Ubuntu 22.04.
 
@@ -75,11 +107,15 @@ ipc: "host"
 
 ## Development Guidelines
 
-### SMACC2 Naming Conventions
-
 This project follows the [SMACC2 naming conventions](https://smacc.dev/naming-convention/) to ensure consistency and readability throughout the codebase.
 
 ## Resources
+
+### PX4
+PX4 is an autopiolot software stack for unmanned aerial vehicles. 
+
+- **PX4 ROS 2 User Guide:** https://docs.px4.io/main/en/ros/ros2_comm.html
+- **uORB Message Reference:** https://docs.px4.io/main/en/msg_docs/ 
 
 ### SMACC (State Machine Asynchronous C++)
 
